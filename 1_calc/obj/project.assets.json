@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/denis/Documents/projects/dotNet/calc/calc.csproj",
+      "projectUniqueName": "/home/denis/Documents/projects/dotNet/1_calc/calc.csproj",
       "projectName": "calc",
-      "projectPath": "/home/denis/Documents/projects/dotNet/calc/calc.csproj",
+      "projectPath": "/home/denis/Documents/projects/dotNet/1_calc/calc.csproj",
       "packagesPath": "/home/denis/.nuget/packages/",
-      "outputPath": "/home/denis/Documents/projects/dotNet/calc/obj/",
+      "outputPath": "/home/denis/Documents/projects/dotNet/1_calc/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
