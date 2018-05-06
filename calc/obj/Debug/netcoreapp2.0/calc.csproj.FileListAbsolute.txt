@@ -18,3 +18,4 @@
 /home/denis/Documents/projects/dotNet/calc/bin/Debug/netcoreapp2.0/calc.runtimeconfig.dev.json
 /home/denis/Documents/projects/dotNet/calc/bin/Debug/netcoreapp2.0/calc.dll
 /home/denis/Documents/projects/dotNet/calc/bin/Debug/netcoreapp2.0/calc.pdb
+/home/denis/Documents/projects/dotNet/calc/obj/Debug/netcoreapp2.0/calc.csprojResolveAssemblyReference.cache
