@@ -28,6 +28,18 @@ namespace bank
             {
                 writer.Write(jsonNewBankClient);
             }
+
+            var workAddress = newClient.workAddress;
+            var xmlNewBankClientAddressSerializer = new XmlSerializer(typeof(Address));
+            var clientXmlAddressWriter = new System.IO.StreamWriter("outputData/workaddress_output.xml");
+            xmlNewBankClientAddressSerializer.Serialize(clientXmlAddressWriter, workAddress);
+
+            var homeAddress = newClient.homeAddress;
+            var jsonNewBankClientHomeAddress = JsonConvert.SerializeObject(homeAddress, Formatting.Indented);
+            using (var writer = new System.IO.StreamWriter("outputData/homeaddress_output.json"))
+            {
+                writer.Write(jsonNewBankClientHomeAddress);
+            }
         }
     }
 }

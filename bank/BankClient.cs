@@ -137,7 +137,7 @@ namespace bank
         public Contacts contacts {get; set;}
 
         [XmlElement("homeAddress")]
-        public Address homeAdress {get; set;}
+        public Address homeAddress {get; set;}
 
         [XmlElement("workAddress")]
         public Address workAddress {get; set;}
@@ -160,7 +160,7 @@ namespace bank
                 client.phone
             );
 
-            this.homeAdress = new Address(
+            this.homeAddress = new Address(
                 client.homeAddressZip,
                 client.homeAddressState,
                 client.homeAddressCity,
