@@ -12,16 +12,16 @@ namespace bank
     {
         static void Main(string[] args)
         {
-            var xmlBankClientSerializer = new XmlSerializer(typeof(BankClient));
+            var xmlOldBankClientSerializer = new XmlSerializer(typeof(OldBankClient));
+            var xmlNewBankClientSerializer = new XmlSerializer(typeof(NewBankClient));
 
-            var client = new BankClient
-            {
-                firstName = "Ivan";
-                lastName = "Petrov";
-            }
+            var clientReader = new System.IO.StreamReader("inputData/clientinfo_input.xml");
+            var clientWriter = new System.IO.StreamWriter("outputData/clientinfo_output.xml");
 
-            var writer = new System.IO.StreamWriter("test1.xml");
-            xmlBankClientSerializer.Serialize(writer, client);
+            var oldClient = xmlOldBankClientSerializer.Deserialize(clientReader);
+            var newClient = new NewBankClient((OldBankClient)oldClient);
+
+            xmlNewBankClientSerializer.Serialize(clientWriter, newClient);
         }
     }
 }

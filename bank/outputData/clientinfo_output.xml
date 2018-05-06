@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bankClient xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <passportData>
+    <surname>Petrov</surname>
+    <name>Petr</name>
+    <middleName>Petrovich</middleName>
+    <birthDate>1989-04-30T00:00:00</birthDate>
+  </passportData>
+  <contacts>
+    <phone>petrov@mailinator.com</phone>
+    <email>+380808080800</email>
+  </contacts>
+  <homeAddress>
+    <zip>54000</zip>
+    <state>Mykolaivs'ka oblast</state>
+    <city>Mykolaiv</city>
+    <address>3rd Inhul's'ka St, 27</address>
+  </homeAddress>
+  <workAddress>
+    <zip>73000</zip>
+    <state>Khersons'ka oblast</state>
+    <city>Kherson</city>
+    <address>Viis'kovyi Ln, 6</address>
+  </workAddress>
+</bankClient>

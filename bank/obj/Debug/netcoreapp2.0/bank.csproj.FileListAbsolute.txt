@@ -1,0 +1,11 @@
+/home/denis/Documents/projects/dotNet/bank/obj/Debug/netcoreapp2.0/bank.csproj.CoreCompileInputs.cache
+/home/denis/Documents/projects/dotNet/bank/obj/Debug/netcoreapp2.0/bank.AssemblyInfoInputs.cache
+/home/denis/Documents/projects/dotNet/bank/obj/Debug/netcoreapp2.0/bank.AssemblyInfo.cs
+/home/denis/Documents/projects/dotNet/bank/bin/Debug/netcoreapp2.0/bank.deps.json
+/home/denis/Documents/projects/dotNet/bank/bin/Debug/netcoreapp2.0/bank.runtimeconfig.json
+/home/denis/Documents/projects/dotNet/bank/bin/Debug/netcoreapp2.0/bank.runtimeconfig.dev.json
+/home/denis/Documents/projects/dotNet/bank/bin/Debug/netcoreapp2.0/bank.dll
+/home/denis/Documents/projects/dotNet/bank/bin/Debug/netcoreapp2.0/bank.pdb
+/home/denis/Documents/projects/dotNet/bank/obj/Debug/netcoreapp2.0/bank.dll
+/home/denis/Documents/projects/dotNet/bank/obj/Debug/netcoreapp2.0/bank.pdb
+/home/denis/Documents/projects/dotNet/bank/obj/Debug/netcoreapp2.0/bank.csprojResolveAssemblyReference.cache
