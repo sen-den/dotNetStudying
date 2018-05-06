@@ -1,0 +1,24 @@
+{
+  "passportData": {
+    "lastName": "Petrov",
+    "firstName": "Petr",
+    "middleName": "Petrovich",
+    "birthDate": "1989-04-30T00:00:00"
+  },
+  "contacts": {
+    "phone": "petrov@mailinator.com",
+    "email": "+380808080800"
+  },
+  "homeAdress": {
+    "zip": "54000",
+    "state": "Mykolaivs'ka oblast",
+    "city": "Mykolaiv",
+    "address": "3rd Inhul's'ka St, 27"
+  },
+  "workAddress": {
+    "zip": "73000",
+    "state": "Khersons'ka oblast",
+    "city": "Kherson",
+    "address": "Viis'kovyi Ln, 6"
+  }
+}

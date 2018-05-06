@@ -15,13 +15,19 @@ namespace bank
             var xmlOldBankClientSerializer = new XmlSerializer(typeof(OldBankClient));
             var xmlNewBankClientSerializer = new XmlSerializer(typeof(NewBankClient));
 
-            var clientReader = new System.IO.StreamReader("inputData/clientinfo_input.xml");
-            var clientWriter = new System.IO.StreamWriter("outputData/clientinfo_output.xml");
+            var clientXmlReader = new System.IO.StreamReader("inputData/clientinfo_input.xml");
+            var clientXmlWriter = new System.IO.StreamWriter("outputData/clientinfo_output.xml");
 
-            var oldClient = xmlOldBankClientSerializer.Deserialize(clientReader);
+            var oldClient = xmlOldBankClientSerializer.Deserialize(clientXmlReader);
             var newClient = new NewBankClient((OldBankClient)oldClient);
 
-            xmlNewBankClientSerializer.Serialize(clientWriter, newClient);
+            xmlNewBankClientSerializer.Serialize(clientXmlWriter, newClient);
+
+            var jsonNewBankClient = JsonConvert.SerializeObject(newClient, Formatting.Indented);
+            using (var writer = new System.IO.StreamWriter("outputData/clientinfo_output.json"))
+            {
+                writer.Write(jsonNewBankClient);
+            }
         }
     }
 }
