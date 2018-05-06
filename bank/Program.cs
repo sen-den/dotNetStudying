@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,8 +48,50 @@ namespace bank
                 }
             }
 
+            // Second task
+            var operationFiles = System.IO.Directory.GetFiles("inputData/operations/");
+            var operationSerializer = new XmlSerializer(typeof(Operation));
 
+            // read operations to list
+            List<Operation> operationsList = new List<Operation>();
+            foreach (String operationFile in operationFiles)
+            {
+                try
+                {
+                    using (var reader = new System.IO.StreamReader(operationFile))
+                    {
+                        String extension;
+                        if ((extension = System.IO.Path.GetExtension(operationFile)) == ".xml")
+                        {
+                            operationsList.Add((Operation)operationSerializer.Deserialize(reader));
+                        }
+                        else if (extension == ".json")
+                        {
+                            operationsList.Add(JsonConvert.DeserializeObject<Operation>(reader.ReadToEnd()));
+                        }
+                    }
+                }
+                catch { }; // pass file if something went wrong
+            }
 
+            // looking for maximum sum
+            var maxSummOperation = operationsList[0];
+            foreach (Operation operation in operationsList)
+            {
+                if (operation.amount > maxSummOperation.amount)
+                {
+                    maxSummOperation = operation;
+                }
+            }
+
+            Console.WriteLine(
+                String.Format(
+                    "Operation with largest sum was {0} of {1} at {2}",
+                    (maxSummOperation.Gettype() == operationType.Credit) ? "credit" : "debit",
+                    maxSummOperation.amount,
+                    maxSummOperation.date
+                )
+            );
         }
     }
 }
