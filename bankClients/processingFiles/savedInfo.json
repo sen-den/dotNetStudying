@@ -1,0 +1,9 @@
+{
+  "result": [
+    "1. There were debit operations for 95037$ and credit for 95574$ in april.",
+    "2. Clients without credit operations in april: System.Collections.Generic.List`1[System.String]",
+    "3. Sergeev Bogdan Sergeevich with first debit on 3/18/18 8:10:55 AM has maximum credit operations sum.",
+    "4. Sergeev Bogdan Sergeevich with first debit on 3/18/18 8:10:55 AM has maximum debit operations sum.",
+    "5. Mykolayenko Petr Ivanovich with first debit on 3/19/18 3:31:22 AM has largest ballance on 2018.05.01"
+  ]
+}

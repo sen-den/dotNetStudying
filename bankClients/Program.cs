@@ -12,6 +12,7 @@ namespace bankClients
         static void Main(string[] args)
         {
             List<Client> bankClients;
+            Results logger = new Results();
             using (var reader = new System.IO.StreamReader("processingFiles/bankClients.json"))
             {
                 var rawBankClients = reader.ReadToEnd();
@@ -40,11 +41,11 @@ namespace bankClients
             }
 
             Console.WriteLine(
-                String.Format(
+                logger.log(String.Format(
                     "1. There were debit operations for {0}$ and credit for {1}$ in april.",
                     debitSum,
                     creditSum
-                )
+                ))
             );
 
             // 2. Clients without credits in april
@@ -67,18 +68,19 @@ namespace bankClients
                 }
             }
 
-            Console.WriteLine("2. Clients without credit operations in april:"); // there aren't such clients?!
-            if (!(clientsWithoutCredits.Count == 0)){
-                foreach (var client in clientsWithoutCredits)
-                {
-                    Console.WriteLine(client.getInfo());
-                }
-            } else {
-                Console.WriteLine("There aren't such clients.");
+            List<String> clientsWithoutCreditsInfo = new List<String>();
+            foreach (var client in clientsWithoutCredits)
+            {
+                clientsWithoutCreditsInfo.Add(client.getInfo());
             }
+            Console.WriteLine(logger.log(
+                "2. Clients without credit operations in april: "
+                + clientsWithoutCreditsInfo.ToString())
+            ); // there aren't such clients?!
+
             // 3-4. Clients with max credit and debit sums
-            var hasMaxCredit = new {clientObj = bankClients[0], sum = -1.0f};
-            var hasMaxDebit = new {clientObj = bankClients[0], sum = -1.0f};
+            var hasMaxCredit = new { clientObj = bankClients[0], sum = -1.0f };
+            var hasMaxDebit = new { clientObj = bankClients[0], sum = -1.0f };
             foreach (var client in bankClients)
             {
                 float clientCreditSum = 0;
@@ -88,45 +90,47 @@ namespace bankClients
                     if (operation.OperationType == operationType.Debit)
                     {
                         clientDebitSum += operation.Amount;
-                    } else {
+                    }
+                    else
+                    {
                         clientCreditSum += operation.Amount;
                     }
                 }
 
                 if (clientCreditSum > hasMaxCredit.sum)
                 {
-                    hasMaxCredit = new {clientObj = client, sum = (float)clientCreditSum};
+                    hasMaxCredit = new { clientObj = client, sum = (float)clientCreditSum };
                 }
                 if (clientDebitSum > hasMaxDebit.sum)
                 {
-                    hasMaxDebit = new {clientObj = client, sum = (float)clientCreditSum};
+                    hasMaxDebit = new { clientObj = client, sum = (float)clientCreditSum };
                 }
             }
 
-            Console.WriteLine(String.Format(
-                "3. {0} has maximum credit operations sum.", hasMaxCredit.clientObj.getInfo()));
-            Console.WriteLine(String.Format(
-                "4. {0} has maximum debit operations sum.", hasMaxDebit.clientObj.getInfo()));
+            Console.WriteLine(logger.log(String.Format(
+                "3. {0} has maximum credit operations sum.", hasMaxCredit.clientObj.getInfo())));
+            Console.WriteLine(logger.log(String.Format(
+                "4. {0} has maximum debit operations sum.", hasMaxDebit.clientObj.getInfo())));
 
             // 4. Largest balance on 1st may.
-            var hasLargestBalance = new {clientObj = bankClients[0], sum = -1.0f};
+            var hasLargestBalance = new { clientObj = bankClients[0], sum = -1.0f };
             foreach (var client in bankClients)
             {
-                float clientDebitSum = 
+                float clientDebitSum =
                     (
-                        from operations in client.Operations 
+                        from operations in client.Operations
                         where (
-                            operations.Date.CompareTo(new DateTime(2018, 05, 01)) < 0 
+                            operations.Date.CompareTo(new DateTime(2018, 05, 01)) < 0
                             && operations.OperationType == operationType.Debit
                             )
                         select operations.Amount
                         ).Sum();
 
-                float clientCreditSum = 
+                float clientCreditSum =
                     (
-                        from operations in client.Operations 
+                        from operations in client.Operations
                         where (
-                            operations.Date.CompareTo(new DateTime(2018, 05, 01)) < 0 
+                            operations.Date.CompareTo(new DateTime(2018, 05, 01)) < 0
                             && operations.OperationType == operationType.Credit
                             )
                         select operations.Amount
@@ -136,12 +140,14 @@ namespace bankClients
 
                 if (clientBalance > hasLargestBalance.sum)
                 {
-                    hasLargestBalance = new {clientObj = client, sum = clientBalance};
+                    hasLargestBalance = new { clientObj = client, sum = clientBalance };
                 }
             }
 
-            Console.WriteLine(String.Format(
-                "5. {0} has largest ballance on 2018.05.01", hasLargestBalance.clientObj.getInfo()));
+            Console.WriteLine(logger.log(String.Format(
+                "5. {0} has largest ballance on 2018.05.01", hasLargestBalance.clientObj.getInfo())));
+
+            logger.save("processingFiles/savedInfo.json");
         }
     }
 }
